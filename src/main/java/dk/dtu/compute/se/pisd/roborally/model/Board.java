@@ -104,6 +104,9 @@ public class Board extends Subject {
         return players.size();
     }
 
+    /**
+     * @param player the player to add to the board
+     */
     public void addPlayer(@NotNull Player player) {
         if (player.board == this && !players.contains(player)) {
             players.add(player);
@@ -202,6 +205,9 @@ public class Board extends Subject {
         return getSpace(x, y);
     }
 
+    /**
+     * @return the message for the status bar as a String
+     */
     public String getStatusMessage() {
         // This is actually a view aspect, but for making the first task easy for
         // the students, this method gives a string representation of the current
