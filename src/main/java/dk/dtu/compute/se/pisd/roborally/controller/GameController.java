@@ -216,12 +216,30 @@ public class GameController {
 
         Space currentSpace = player.getSpace();
         Heading currentHeading = player.getHeading();
+        Space newSpace1;
+        Space newSpace2;
 
         switch(currentHeading){
-            case NORTH -> player.setSpace(new Space(this.board, currentSpace.x, currentSpace.y - 2));
-            case SOUTH -> player.setSpace(new Space(this.board, currentSpace.x, currentSpace.y + 2));
-            case WEST -> player.setSpace(new Space(this.board, currentSpace.x - 2, currentSpace.y));
-            case EAST -> player.setSpace(new Space(this.board, currentSpace.x + 2, currentSpace.y));
+            case EAST:
+                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
+                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
+                player.setSpace(newSpace2);
+                break;
+            case WEST:
+                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
+                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
+                player.setSpace(newSpace2);
+                break;
+            case NORTH:
+                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
+                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
+                player.setSpace(newSpace2);
+                break;
+            case SOUTH:
+                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
+                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
+                player.setSpace(newSpace2);
+                break;
         }
 
     }
