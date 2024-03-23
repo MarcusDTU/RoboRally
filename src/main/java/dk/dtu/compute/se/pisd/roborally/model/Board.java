@@ -57,6 +57,8 @@ public class Board extends Subject {
 
     private boolean stepMode;
 
+    private int totalMoves = 0;
+
     public Board(int width, int height, @NotNull String boardName) {
         this.boardName = boardName;
         this.width = width;
@@ -213,7 +215,8 @@ public class Board extends Subject {
         //      of the current move!
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName() +
-                ", Step: " + getStep();
+                ", Step: " + getStep() +
+                ", Total Moves:" + getTotalMoves();
 
         // TODO Task1: add a counter along with a getter and a setter, so the
         //      state of the board (game) contains the number of moves, which then can
@@ -221,4 +224,11 @@ public class Board extends Subject {
     }
 
 
+    public int getTotalMoves() {
+        return totalMoves;
+    }
+
+    public void setTotalMoves(int totalMoves) {
+        this.totalMoves = totalMoves;
+    }
 }
