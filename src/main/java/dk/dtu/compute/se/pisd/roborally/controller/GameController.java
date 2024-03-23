@@ -207,7 +207,15 @@ public class GameController {
 
     // TODO Task2
     public void turnRight(@NotNull Player player) {
+        Heading currentHeading = player.getHeading();
 
+        switch(currentHeading){
+
+            case NORTH -> player.setHeading(Heading.EAST);
+            case SOUTH -> player.setHeading(Heading.WEST);
+            case EAST -> player.setHeading(Heading.SOUTH);
+            case WEST -> player.setHeading(Heading.NORTH);
+        }
     }
 
     // TODO Task2
