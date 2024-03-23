@@ -41,7 +41,7 @@ public class GameController {
     /**
      * This is just some dummy controller operation to make a simple move to see something
      * happening on the board. This method should eventually be deleted!
-     *
+     * @author Asma Maryam, Turan Talayhan
      * @param space the space to which the current player should move
      */
     public void moveCurrentPlayerToSpace(@NotNull Space space)  {
@@ -71,6 +71,7 @@ public class GameController {
         }
 
     }
+
 
     // XXX: implemented in the current version
     public void startProgrammingPhase() {
