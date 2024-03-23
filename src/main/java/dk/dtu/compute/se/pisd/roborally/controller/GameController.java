@@ -197,6 +197,17 @@ public class GameController {
 
     // TODO Task2
     public void moveForward(@NotNull Player player) {
+        Space currentSpace = player.getSpace();
+        Heading currentHeading = player.getHeading();
+
+        switch(currentHeading){
+
+            case NORTH -> player.setSpace(new Space(this.board, currentSpace.x, currentSpace.y-1));
+            case SOUTH -> player.setSpace(new Space(this.board, currentSpace.x, currentSpace.y+1));
+            case EAST -> player.setSpace(new Space(this.board, currentSpace.x+1, currentSpace.y ));
+            case WEST -> player.setSpace(new Space(this.board,currentSpace.x-1,currentSpace.y));
+
+        }
 
     }
 
