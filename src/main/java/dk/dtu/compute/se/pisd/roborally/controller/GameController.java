@@ -214,6 +214,11 @@ public class GameController {
     }
 
     // TODO Task2
+    /**
+     * This is a method, that moves the player according the heading of the player
+     *
+     * @param player is the player that shall move
+     */
     public void moveForward(@NotNull Player player) {
         Space currentSpace = player.getSpace();
         Heading currentHeading = player.getHeading();
@@ -241,6 +246,11 @@ public class GameController {
     }
 
     // TODO Task2
+    /**
+     * This method, works like moveForward, but moves 2 spaces instead of 1
+     *
+     * @param player is the player that shall move
+     */
     public void fastForward(@NotNull Player player) {
 
         Space currentSpace = player.getSpace();
@@ -274,6 +284,11 @@ public class GameController {
     }
 
     // TODO Task2
+    /**
+     * This method, will turn the player to the right according to its heading
+     *
+     * @param player is the player that shall move
+     */
     public void turnRight(@NotNull Player player) {
         Heading currentHeading = player.getHeading();
 
@@ -287,6 +302,11 @@ public class GameController {
     }
 
     // TODO Task2
+    /**
+     * This method, will turn the player to the left according to its heading
+     *
+     * @param player is the player that shall move
+     */
     public void turnLeft(@NotNull Player player) {
 
         Heading currentHeading = player.getHeading();
