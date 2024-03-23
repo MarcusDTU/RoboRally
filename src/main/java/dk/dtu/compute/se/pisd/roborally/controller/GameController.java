@@ -214,21 +214,86 @@ public class GameController {
 
     // TODO Task2
     public void moveForward(@NotNull Player player) {
+        Space currentSpace = player.getSpace();
+        Heading currentHeading = player.getHeading();
+
+        switch(currentHeading){
+
+            case NORTH -> player.setSpace(this.board.getNeighbour(currentSpace,Heading.NORTH));
+            case SOUTH -> player.setSpace(this.board.getNeighbour(currentSpace,Heading.SOUTH));
+            case EAST -> player.setSpace(this.board.getNeighbour(currentSpace,Heading.EAST));
+            case WEST -> player.setSpace(this.board.getNeighbour(currentSpace,Heading.WEST));
+
+        }
+
 
     }
 
     // TODO Task2
     public void fastForward(@NotNull Player player) {
 
+        Space currentSpace = player.getSpace();
+        Heading currentHeading = player.getHeading();
+        Space newSpace1;
+        Space newSpace2;
+
+        switch(currentHeading){
+            case EAST:
+                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
+                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
+                player.setSpace(newSpace2);
+                break;
+            case WEST:
+                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
+                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
+                player.setSpace(newSpace2);
+                break;
+            case NORTH:
+                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
+                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
+                player.setSpace(newSpace2);
+                break;
+            case SOUTH:
+                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
+                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
+                player.setSpace(newSpace2);
+                break;
+        }
+
     }
 
     // TODO Task2
     public void turnRight(@NotNull Player player) {
+        Heading currentHeading = player.getHeading();
 
+        switch(currentHeading){
+
+            case NORTH -> player.setHeading(Heading.EAST);
+            case SOUTH -> player.setHeading(Heading.WEST);
+            case EAST -> player.setHeading(Heading.SOUTH);
+            case WEST -> player.setHeading(Heading.NORTH);
+        }
     }
 
     // TODO Task2
     public void turnLeft(@NotNull Player player) {
+
+        Heading currentHeading = player.getHeading();
+
+        switch(currentHeading){
+            case EAST:
+                player.setHeading(Heading.NORTH);
+                break;
+            case WEST:
+                player.setHeading(Heading.SOUTH);
+                break;
+            case NORTH:
+                player.setHeading(Heading.WEST);
+                break;
+            case SOUTH:
+                player.setHeading(Heading.EAST);
+                break;
+        }
 
     }
 
