@@ -213,6 +213,23 @@ public class GameController {
     // TODO Task2
     public void turnLeft(@NotNull Player player) {
 
+        Heading currentHeading = player.getHeading();
+
+        switch(currentHeading){
+            case EAST:
+                player.setHeading(Heading.NORTH);
+                break;
+            case WEST:
+                player.setHeading(Heading.SOUTH);
+                break;
+            case NORTH:
+                player.setHeading(Heading.WEST);
+                break;
+            case SOUTH:
+                player.setHeading(Heading.EAST);
+                break;
+        }
+
     }
 
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
