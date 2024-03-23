@@ -203,6 +203,16 @@ public class GameController {
     // TODO Task2
     public void fastForward(@NotNull Player player) {
 
+        Space currentSpace = player.getSpace();
+        Heading currentHeading = player.getHeading();
+
+        switch(currentHeading){
+            case NORTH -> player.setSpace(new Space(this.board, currentSpace.x, currentSpace.y - 2));
+            case SOUTH -> player.setSpace(new Space(this.board, currentSpace.x, currentSpace.y + 2));
+            case WEST -> player.setSpace(new Space(this.board, currentSpace.x - 2, currentSpace.y));
+            case EAST -> player.setSpace(new Space(this.board, currentSpace.x + 2, currentSpace.y));
+        }
+
     }
 
     // TODO Task2
