@@ -202,12 +202,13 @@ public class GameController {
 
         switch(currentHeading){
 
-            case NORTH -> player.setSpace(new Space(this.board, currentSpace.x, currentSpace.y-1));
-            case SOUTH -> player.setSpace(new Space(this.board, currentSpace.x, currentSpace.y+1));
-            case EAST -> player.setSpace(new Space(this.board, currentSpace.x+1, currentSpace.y ));
-            case WEST -> player.setSpace(new Space(this.board,currentSpace.x-1,currentSpace.y));
+            case NORTH -> player.setSpace(this.board.getNeighbour(currentSpace,Heading.NORTH));
+            case SOUTH -> player.setSpace(this.board.getNeighbour(currentSpace,Heading.SOUTH));
+            case EAST -> player.setSpace(this.board.getNeighbour(currentSpace,Heading.EAST));
+            case WEST -> player.setSpace(this.board.getNeighbour(currentSpace,Heading.WEST));
 
         }
+
 
     }
 
