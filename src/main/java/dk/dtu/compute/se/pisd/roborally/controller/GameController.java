@@ -112,6 +112,9 @@ public class GameController {
         board.setStep(0);
     }
 
+    /**
+     * @param register allows you to select which set of cards should be displayed on the user interface.
+     */
     // XXX: implemented in the current version
     private void makeProgramFieldsVisible(int register) {
         if (register >= 0 && register < Player.NO_REGISTERS) {
@@ -187,6 +190,10 @@ public class GameController {
         }
     }
 
+    /**
+     * @param player represent the player, who is currently taking their turn in the game.
+     * @param command that lists the possible actions a player's robot can take on their turn.
+     */
     // XXX: implemented in the current version
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
@@ -233,6 +240,10 @@ public class GameController {
 
     }
 
+    /**
+     * @param source represents the  field from which a command card will be moved.
+     * @param target represents the target field or "for example discard " to which the command card will be moved.
+     */
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
         CommandCard sourceCard = source.getCard();
         CommandCard targetCard = target.getCard();
