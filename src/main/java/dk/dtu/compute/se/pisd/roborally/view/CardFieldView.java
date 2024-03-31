@@ -38,10 +38,10 @@ import javafx.scene.paint.Color;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
- *
+ * Represents a view of a card field (register) in the player's program 
+ * or a command card that can be dragged to or from the player's program.  
  * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
  */
 public class CardFieldView extends GridPane implements ViewObserver {
 
