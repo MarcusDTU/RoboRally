@@ -35,8 +35,11 @@ import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
- *
+ * This class is basically a visual representation of the game board.
+ * It observes changes to the board and updates accordingly.
+ * It allows interaction with spaces on the board through mouse click.
+ * The actual mechanics of the game are controlled by the GameController,
+ * which BoardView communicates with.
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
@@ -52,6 +55,15 @@ public class BoardView extends VBox implements ViewObserver {
     private Label statusLabel;
 
     private SpaceEventHandler spaceEventHandler;
+
+    /**
+     * The BoardView constructor takes a GameController object, which it uses to
+     * initialize the Board.Each SpaceView is associated with a mouse event handler
+     * so that clicking on a space can trigger game actions, like moving a player to that space.
+     * Using the  this.getChildren().add method which is ensuring
+     * that mainBoardPane, PlayersView and statusLabel will all display in a vertical order in the interface.
+     * @param gameController the controller for the game , which cannot be null.
+     */
 
     public BoardView(@NotNull GameController gameController) {
         board = gameController.board;
@@ -82,6 +94,10 @@ public class BoardView extends VBox implements ViewObserver {
         update(board);
     }
 
+    /**
+     * update the view.The updateView method is designed to be called whenever the state of the Subject it's observing changes.
+     * @param subject following the observer design pattern. It is expected to be an instance og the Board model class.
+     */
     @Override
     public void updateView(Subject subject) {
         if (subject == board) {
@@ -96,10 +112,18 @@ public class BoardView extends VBox implements ViewObserver {
 
         final public GameController gameController;
 
+        /**
+         * It will allow players to move to spaces on the board via mouse clicks.
+         * @param gameController will handle the actual player movement.
+         */
         public SpaceEventHandler(@NotNull GameController gameController) {
             this.gameController = gameController;
         }
 
+        /**
+         * Handles mouse click events on spaces of the board.
+         * @param event  the mouse event to handle.
+         */
         @Override
         public void handle(MouseEvent event) {
             Object source = event.getSource();

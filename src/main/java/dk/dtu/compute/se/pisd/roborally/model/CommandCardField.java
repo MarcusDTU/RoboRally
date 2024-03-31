@@ -80,7 +80,7 @@ public class CommandCardField extends Subject {
     }
 
     /**
-     * this method sets the visibility of this field and notifies observers
+     * This method sets the visibility of this field and notifies observers
      *if there is a change.
      * @param visible The new visibility state of this field, and have boolean type. .
      */
