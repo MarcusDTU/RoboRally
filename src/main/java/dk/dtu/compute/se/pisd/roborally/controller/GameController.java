@@ -49,7 +49,7 @@ public class GameController {
         if(space.getPlayer() == null){
             currentPlayer.setSpace(space);
             space.setPlayer(currentPlayer);
-            board.setTotalMoves(board.getTotalMoves() + 1);
+            board.setStep(board.getStep() + 1);
 
             int nextPlayerNum = (board.getPlayerNumber(currentPlayer) + 1) % board.getPlayersNumber();
 
