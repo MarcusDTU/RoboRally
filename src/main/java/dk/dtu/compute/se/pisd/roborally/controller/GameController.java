@@ -25,10 +25,8 @@ import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
- *
+ * The game controller for the game which is responsible for the gameplay logic.
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class GameController {
 
@@ -41,18 +39,12 @@ public class GameController {
     /**
      * This is just some dummy controller operation to make a simple move to see something
      * happening on the board. This method should eventually be deleted!
-     * @author Asma Maryam
-     * @author Turan Talayhan
+     * @author Asma Maryam, s230716@dtu.dk
+     * @author Turan Talayhan, s224746@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk
      * @param space the space to which the current player should move
      */
     public void moveCurrentPlayerToSpace(@NotNull Space space)  {
-        // TODO Task1: method should be implemented by the students:
-        //   - the current player should be moved to the given space
-        //     (if it is free())
-        //   - and the current player should be set to the player
-        //     following the current player
-        //   - the counter of moves in the game should be increased by one
-        //     if the player is moved
         Player currentPlayer = board.getCurrentPlayer();
         if(space.getPlayer() == null){
             currentPlayer.setSpace(space);
@@ -64,11 +56,12 @@ public class GameController {
             Player nextPlayer = board.getPlayer(nextPlayerNum);
             board.setCurrentPlayer(nextPlayer);
         }
-
     }
 
-
-    // XXX: implemented in the current version
+    /**
+     * Starts the programming phase of the game.
+     * @author Ekkart Kindler, ekki@dtu.dk
+     */
     public void startProgrammingPhase() {
         board.setPhase(Phase.PROGRAMMING);
         board.setCurrentPlayer(board.getPlayer(0));
@@ -91,14 +84,21 @@ public class GameController {
         }
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Generates a random command card.
+     * @return a random command card
+     * @author Ekkart Kindler, ekki@dtu.dk
+     */
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
         return new CommandCard(commands[random]);
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Finishes the programming phase of the game and starts the activation phase.
+     * @author Ekkart Kindler, ekki@dtu.dk
+     */
     public void finishProgrammingPhase() {
         makeProgramFieldsInvisible();
         makeProgramFieldsVisible(0);
@@ -109,8 +109,8 @@ public class GameController {
 
     /**
      * @param register allows you to select which set of cards should be displayed on the user interface.
+     * @author Ekkart Kindler, ekki@dtu.dk
      */
-    // XXX: implemented in the current version
     private void makeProgramFieldsVisible(int register) {
         if (register >= 0 && register < Player.NO_REGISTERS) {
             for (int i = 0; i < board.getPlayersNumber(); i++) {
@@ -121,7 +121,10 @@ public class GameController {
         }
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Makes the program fields invisible.
+     * @author Ekkart Kindler, ekki@dtu.dk
+     */
     private void makeProgramFieldsInvisible() {
         for (int i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
@@ -132,26 +135,38 @@ public class GameController {
         }
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Executes all the program registers of the players.
+     * @author Ekkart Kindler, ekki@dtu.dk
+     */
     public void executePrograms() {
         board.setStepMode(false);
         continuePrograms();
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Executes the next step in the program registers of the players.
+     * @author Ekkart Kindler, ekki@dtu.dk
+     */
     public void executeStep() {
         board.setStepMode(true);
         continuePrograms();
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Continues the execution of the program registers of the players.
+     * @author Ekkart Kindler, ekki@dtu.dk
+     */
     private void continuePrograms() {
         do {
             executeNextStep();
         } while (board.getPhase() == Phase.ACTIVATION && !board.isStepMode());
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Executes the next step in the program registers of the players.
+     * @author Ekkart Kindler, ekki@dtu.dk
+     */
     private void executeNextStep() {
         Player currentPlayer = board.getCurrentPlayer();
         if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null) {
@@ -188,14 +203,10 @@ public class GameController {
     /**
      * @param player represent the player, who is currently taking their turn in the game.
      * @param command that lists the possible actions a player's robot can take on their turn.
+     * @author Ekkart Kindler, ekki@dtu.dk
      */
-    // XXX: implemented in the current version
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
-            // XXX This is a very simplistic way of dealing with some basic cards and
-            //     their execution. This should eventually be done in a more elegant way
-            //     (this concerns the way cards are modelled as well as the way they are executed).
-
             switch (command) {
                 case FORWARD:
                     this.moveForward(player);
@@ -215,11 +226,12 @@ public class GameController {
         }
     }
 
-    // TODO Task2
     /**
-     * This is a method, that moves the player according the heading of the player
-     *
-     * @param player is the player that shall move
+     * Moves the player according the current heading of the player.
+     * @param player the player that shall move
+     * @author Marcus Reiner Langkilde, s195080@dtu.dk
+     * @author Haleef Abu Talib, s224523@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk
      */
     public void moveForward(@NotNull Player player) {
         final Space currentSpace = player.getSpace();
@@ -228,40 +240,46 @@ public class GameController {
         player.setSpace(this.board.getNeighbour(currentSpace, currentHeading));
     }
 
-    // TODO Task2
     /**
-     * This method, works like moveForward, but moves 2 spaces instead of 1
-     *
-     * @param player is the player that shall move
+     * Moves the player two steps forward according the current heading of the player.
+     * @param player the player that shall move
+     * @author Marcus Reiner Langkilde, s195080@dtu.dk
+     * @author Haleef Abu Talib, s224523@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk
      */
     public void fastForward(@NotNull Player player) {
         moveForward(player);
         moveForward(player);
     }
 
-    // TODO Task2
     /**
-     * This method, will turn the player to the right according to its heading
-     *
-     * @param player is the player that shall move
+     * Turn the player to the right according to its heading
+     * @param player the player that shall turn right
+     * @author Marcus Reiner Langkilde, s195080@dtu.dk
+     * @author Haleef Abu Talib, s224523@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk
      */
     public void turnRight(@NotNull Player player) {
         player.setHeading(player.getHeading().next());
     }
 
-    // TODO Task2
     /**
-     * This method, will turn the player to the left according to its heading
-     *
-     * @param player is the player that shall move
+     * Turns the player to the left according to its heading
+     * @param player the player that shall turn left
+     * @author Marcus Reiner Langkilde, s195080@dtu.dk
+     * @author Haleef Abu Talib, s224523@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk
      */
     public void turnLeft(@NotNull Player player) {
         player.setHeading(player.getHeading().prev());
     }
 
     /**
+     * Moves a command card from source to target.
      * @param source represents the  field from which a command card will be moved.
      * @param target represents the target field or "for example discard " to which the command card will be moved.
+     * @return true if the card was moved, false otherwise.
+     * @author Ekkart Kindler, ekki@dtu.dk
      */
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
         CommandCard sourceCard = source.getCard();
@@ -278,6 +296,7 @@ public class GameController {
     /**
      * A method called when no corresponding controller operation is implemented yet. This
      * should eventually be removed.
+     * @author Ekkart Kindler, ekki@dtu.dk
      */
     public void notImplemented() {
         // XXX just for now to indicate that the actual method is not yet implemented
