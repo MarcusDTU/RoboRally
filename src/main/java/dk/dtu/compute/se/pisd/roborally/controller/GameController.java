@@ -25,8 +25,10 @@ import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The game controller for the game which is responsible for the gameplay logic.
+ * The game controller for the game which is responsible for the gameplay logic
+ * like moving the robots and executing command cards.
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
  */
 public class GameController {
 
@@ -61,6 +63,7 @@ public class GameController {
     /**
      * Starts the programming phase of the game.
      * @author Ekkart Kindler, ekki@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
     public void startProgrammingPhase() {
         board.setPhase(Phase.PROGRAMMING);
@@ -88,6 +91,7 @@ public class GameController {
      * Generates a random command card.
      * @return a random command card
      * @author Ekkart Kindler, ekki@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
@@ -96,8 +100,12 @@ public class GameController {
     }
 
     /**
-     * Finishes the programming phase of the game and starts the activation phase.
+     * Finishes the programming phase of the game and 
+     * starts the activation phase. The first player is set as the current player.
+     * The step is set to 0 and the program fields of the players are made invisible
+     * except for the first register of the first player.
      * @author Ekkart Kindler, ekki@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
     public void finishProgrammingPhase() {
         makeProgramFieldsInvisible();
@@ -108,8 +116,10 @@ public class GameController {
     }
 
     /**
-     * @param register allows you to select which set of cards should be displayed on the user interface.
+     * Allows you to select which set of cards should be displayed on the user interface.
+     * @param register the register number of the program fields to be made visible
      * @author Ekkart Kindler, ekki@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
     private void makeProgramFieldsVisible(int register) {
         if (register >= 0 && register < Player.NO_REGISTERS) {
@@ -122,8 +132,9 @@ public class GameController {
     }
 
     /**
-     * Makes the program fields invisible.
+     * Makes all program fields invisible for all players.
      * @author Ekkart Kindler, ekki@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
     private void makeProgramFieldsInvisible() {
         for (int i = 0; i < board.getPlayersNumber(); i++) {
@@ -138,6 +149,7 @@ public class GameController {
     /**
      * Executes all the program registers of the players.
      * @author Ekkart Kindler, ekki@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
     public void executePrograms() {
         board.setStepMode(false);
@@ -147,6 +159,7 @@ public class GameController {
     /**
      * Executes the next step in the program registers of the players.
      * @author Ekkart Kindler, ekki@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
     public void executeStep() {
         board.setStepMode(true);
@@ -154,8 +167,11 @@ public class GameController {
     }
 
     /**
-     * Continues the execution of the program registers of the players.
+     * Continues the execution of the program registers of the players in the activation phase.
+     * Will execute all programs if the step mode is not enabled.
+     * Runs only once the step mode is enabled.
      * @author Ekkart Kindler, ekki@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
     private void continuePrograms() {
         do {
@@ -166,6 +182,7 @@ public class GameController {
     /**
      * Executes the next step in the program registers of the players.
      * @author Ekkart Kindler, ekki@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
     private void executeNextStep() {
         Player currentPlayer = board.getCurrentPlayer();
@@ -201,9 +218,11 @@ public class GameController {
     }
 
     /**
+     * Executes a command for a player.
      * @param player represent the player, who is currently taking their turn in the game.
      * @param command that lists the possible actions a player's robot can take on their turn.
      * @author Ekkart Kindler, ekki@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
@@ -228,6 +247,7 @@ public class GameController {
 
     /**
      * Moves the player according the current heading of the player.
+     * Not gonna move if another player is in the way of the path.
      * @param player the player that shall move
      * @author Marcus Reiner Langkilde, s195080@dtu.dk
      * @author Haleef Abu Talib, s224523@dtu.dk
@@ -242,6 +262,8 @@ public class GameController {
 
     /**
      * Moves the player two steps forward according the current heading of the player.
+     * The method uses the {@link #moveForward} method to move the player and will 
+     * therefore not move if another player is in the way of the path.
      * @param player the player that shall move
      * @author Marcus Reiner Langkilde, s195080@dtu.dk
      * @author Haleef Abu Talib, s224523@dtu.dk
@@ -253,7 +275,7 @@ public class GameController {
     }
 
     /**
-     * Turn the player to the right according to its heading
+     * Turns the player to the right according to the heading of the player.
      * @param player the player that shall turn right
      * @author Marcus Reiner Langkilde, s195080@dtu.dk
      * @author Haleef Abu Talib, s224523@dtu.dk
@@ -264,7 +286,7 @@ public class GameController {
     }
 
     /**
-     * Turns the player to the left according to its heading
+     * Turns the player to the left according to the heading of the player.
      * @param player the player that shall turn left
      * @author Marcus Reiner Langkilde, s195080@dtu.dk
      * @author Haleef Abu Talib, s224523@dtu.dk
@@ -275,11 +297,12 @@ public class GameController {
     }
 
     /**
-     * Moves a command card from source to target.
+     * Moves a command card from a source to a target.
      * @param source represents the  field from which a command card will be moved.
      * @param target represents the target field or "for example discard " to which the command card will be moved.
      * @return true if the card was moved, false otherwise.
      * @author Ekkart Kindler, ekki@dtu.dk
+     * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
         CommandCard sourceCard = source.getCard();
