@@ -25,8 +25,10 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
- *
+ * The CommandCard encapsulates a command that can be executed within the game.
+ * It extends the Subject class from the design patterns observer, allowing observer
+ * to track changes to the command cards state. The command card tells robots in the
+ * game what to do and keeps everyone updated when something changes.
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
@@ -34,10 +36,20 @@ public class CommandCard extends Subject {
 
     final public Command command;
 
+    /**
+     * Constructs a CommandCard with a game command.
+     * @param command A non-null Command that this card will hold.
+     * @author Ekkart Kindler
+     */
     public CommandCard(@NotNull Command command) {
         this.command = command;
     }
 
+    /**
+     * Get the name of the command on the card.
+     * @return the command's name.
+     * @author Ekkart Kindler
+     */
     public String getName() {
         return command.displayName;
     }
