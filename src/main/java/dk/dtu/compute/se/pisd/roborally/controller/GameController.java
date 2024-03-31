@@ -61,7 +61,9 @@ public class GameController {
     }
 
     /**
-     * Starts the programming phase of the game.
+     * Sets the game into the programming phase and
+     * sets player 0 to the current player and step to 0. All the program fields of the players
+     * are made visible and the command card fields are filled with random command cards.
      * @author Ekkart Kindler, ekki@dtu.dk
      * @author Daniel Overballe Lerche, s235095@dtu.dk (javadoc only)
      */
