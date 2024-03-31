@@ -32,7 +32,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * ...
+ * The main class for the RoboRally application and is therefore responsible 
+ * for setting up the primary stage, scene and AppController.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
