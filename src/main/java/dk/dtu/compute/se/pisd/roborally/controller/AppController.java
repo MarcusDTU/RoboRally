@@ -58,7 +58,14 @@ public class AppController implements Observer {
     public AppController(@NotNull RoboRally roboRally) {
         this.roboRally = roboRally;
     }
-
+    /** 
+     *Used to start a new game. The user selects the number of players, 2-6, from a predefined list (see attribute PLAYER_NUMBER_OPTIONS).
+     * Afterwards, the method creates a board (placeholder), a gameController as well as the players, place the players on the board  (placeholder),
+     * starts the programming phase and creates a boardView.
+     * 
+     * If this method is called while a game is already ongoing, the user is given the option of saving their current game and starting a new game, or simply
+     * aborting the operation.
+    */
     public void newGame() {
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(PLAYER_NUMBER_OPTIONS.get(0), PLAYER_NUMBER_OPTIONS);
         dialog.setTitle("Player number");
@@ -93,10 +100,16 @@ public class AppController implements Observer {
         }
     }
 
+    /*
+     * This method saves the current game.
+     */
     public void saveGame() {
         // XXX needs to be implemented eventually
     }
 
+    /*
+     * This method loads a previously saved game.
+     */
     public void loadGame() {
         // XXX needs to be implemented eventually
         // for now, we just create a new game
@@ -127,6 +140,12 @@ public class AppController implements Observer {
         return false;
     }
 
+    /*
+     * This method raises a dialog, allowing the user to exit the application.
+     * If the user selects cancel in the dialog, the dialog closes. Otherwise, 
+     * if the user selects ok, they are given the option of saving the current game,
+     * followed by exiting the application.
+     */
     public void exit() {
         if (gameController != null) {
             Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -145,12 +164,16 @@ public class AppController implements Observer {
             Platform.exit();
         }
     }
-
+    /*
+     * @return Whether the game is running as a boolean.
+     */
     public boolean isGameRunning() {
         return gameController != null;
     }
 
-
+    /*
+     *  @param subject
+     */
     @Override
     public void update(Subject subject) {
         // XXX do nothing for now
