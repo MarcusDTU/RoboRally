@@ -41,9 +41,11 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * ...
+ * AppController is responsible for managing initialization of a game, saving an ongoing game,
+ * loading a previous game, as well as exiting a current game.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
  *
  */
 public class AppController implements Observer {
@@ -58,7 +60,16 @@ public class AppController implements Observer {
     public AppController(@NotNull RoboRally roboRally) {
         this.roboRally = roboRally;
     }
-
+    /** 
+     *Used to start a new game. The user selects the number of players, 2-6, from a predefined list (see attribute PLAYER_NUMBER_OPTIONS).
+     * Afterwards, the method creates a board (placeholder), a gameController as well as the players, place the players on the board  (placeholder),
+     * starts the programming phase and creates a boardView.
+     * 
+     * If this method is called while a game is already ongoing, the user is given the option of saving their current game and starting a new game, or simply
+     * aborting the operation.
+     * 
+     *  @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
+    */
     public void newGame() {
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(PLAYER_NUMBER_OPTIONS.get(0), PLAYER_NUMBER_OPTIONS);
         dialog.setTitle("Player number");
@@ -93,10 +104,17 @@ public class AppController implements Observer {
         }
     }
 
+    /*
+     * This method saves the current game.
+     * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
+     */
     public void saveGame() {
         // XXX needs to be implemented eventually
     }
 
+    /*
+     * This method loads a previously saved game.
+     */
     public void loadGame() {
         // XXX needs to be implemented eventually
         // for now, we just create a new game
@@ -113,6 +131,7 @@ public class AppController implements Observer {
      * there is no current game, false is returned.
      *
      * @return true if the current game was stopped, false otherwise
+     * 
      */
     public boolean stopGame() {
         if (gameController != null) {
@@ -127,6 +146,15 @@ public class AppController implements Observer {
         return false;
     }
 
+    /*
+     * This method raises a dialog, allowing the user to exit the application.
+     * If the user selects cancel in the dialog, the dialog closes. Otherwise, 
+     * if the user selects ok, they are given the option of saving the current game,
+     * followed by exiting the application.
+     * 
+     * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
+     * 
+     */
     public void exit() {
         if (gameController != null) {
             Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -145,12 +173,21 @@ public class AppController implements Observer {
             Platform.exit();
         }
     }
-
+    /*
+     * @return Whether the game is running as a boolean.
+     * 
+     * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
+     * 
+     */
     public boolean isGameRunning() {
         return gameController != null;
     }
 
-
+    /*
+     *  @param subject
+     * 
+     * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
+     */
     @Override
     public void update(Subject subject) {
         // XXX do nothing for now
