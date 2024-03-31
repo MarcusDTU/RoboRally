@@ -33,8 +33,15 @@ import javafx.application.Platform;
  */
 public interface ViewObserver extends Observer {
 
+    /**
+     * Updates the view with the subject
+     * @param subject the subject to update in the view
+     */
     void updateView(Subject subject);
 
+    /**
+     * @param subject the subject to update
+     */
     @Override
     default void update(Subject subject) {
         // This default implementation of the update method makes sure that ViewObserver implementations
