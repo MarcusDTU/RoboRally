@@ -40,7 +40,6 @@ public class CommandCard extends Subject {
     /**
      * Constructs a CommandCard with a game command.
      * @param command A non-null Command that this card will hold.
-     * @author Ekkart Kindler
      */
     public CommandCard(@NotNull Command command) {
         this.command = command;
@@ -49,7 +48,6 @@ public class CommandCard extends Subject {
     /**
      * Get the name of the command on the card.
      * @return the command's name.
-     * @author Ekkart Kindler
      */
     public String getName() {
         return command.displayName;

@@ -41,6 +41,7 @@ import org.jetbrains.annotations.NotNull;
  * The actual mechanics of the game are controlled by the GameController,
  * which BoardView communicates with.
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author Asma Maryam (Only Javadoc)
  *
  */
 public class BoardView extends VBox implements ViewObserver {
