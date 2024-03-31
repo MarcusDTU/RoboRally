@@ -41,7 +41,8 @@ public class GameController {
     /**
      * This is just some dummy controller operation to make a simple move to see something
      * happening on the board. This method should eventually be deleted!
-     * @author Asma Maryam, Turan Talayhan
+     * @author Asma Maryam
+     * @author Turan Talayhan
      * @param space the space to which the current player should move
      */
     public void moveCurrentPlayerToSpace(@NotNull Space space)  {
@@ -58,13 +59,7 @@ public class GameController {
             space.setPlayer(currentPlayer);
             board.setTotalMoves(board.getTotalMoves() + 1);
 
-            int nextPlayerNum;
-
-            if(board.getPlayersNumber() != board.getPlayerNumber(currentPlayer) + 1){
-                nextPlayerNum = board.getPlayerNumber(currentPlayer) + 1;
-            } else {
-                nextPlayerNum = (board.getPlayerNumber(currentPlayer) + 1) - board.getPlayersNumber();
-            }
+            int nextPlayerNum = (board.getPlayerNumber(currentPlayer) + 1) % board.getPlayersNumber();
 
             Player nextPlayer = board.getPlayer(nextPlayerNum);
             board.setCurrentPlayer(nextPlayer);
@@ -227,29 +222,10 @@ public class GameController {
      * @param player is the player that shall move
      */
     public void moveForward(@NotNull Player player) {
-        Space currentSpace = player.getSpace();
-        Heading currentHeading = player.getHeading();
+        final Space currentSpace = player.getSpace();
+        final Heading currentHeading = player.getHeading();
 
-        switch(currentHeading){
-
-            case NORTH -> {
-                if(currentSpace.y > 0)
-                    player.setSpace(this.board.getNeighbour(currentSpace,Heading.NORTH));
-            }
-            case SOUTH -> {
-                if(currentSpace.x <= board.height-1)player.setSpace(this.board.getNeighbour(currentSpace,Heading.SOUTH));
-            }
-            case EAST -> {
-                if(currentSpace.x < 0)
-                    player.setSpace(this.board.getNeighbour(currentSpace,Heading.EAST));
-            }
-            case WEST -> {
-                if(currentSpace.x >= board.width-1)player.setSpace(this.board.getNeighbour(currentSpace,Heading.WEST));
-            }
-
-        }
-
-
+        player.setSpace(this.board.getNeighbour(currentSpace, currentHeading));
     }
 
     // TODO Task2
@@ -259,35 +235,8 @@ public class GameController {
      * @param player is the player that shall move
      */
     public void fastForward(@NotNull Player player) {
-
-        Space currentSpace = player.getSpace();
-        Heading currentHeading = player.getHeading();
-        Space newSpace1;
-        Space newSpace2;
-
-        switch(currentHeading){
-            case EAST:
-                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
-                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
-                player.setSpace(newSpace2);
-                break;
-            case WEST:
-                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
-                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
-                player.setSpace(newSpace2);
-                break;
-            case NORTH:
-                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
-                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
-                player.setSpace(newSpace2);
-                break;
-            case SOUTH:
-                newSpace1 = board.getNeighbour(currentSpace, currentHeading);
-                newSpace2 = board.getNeighbour(newSpace1, currentHeading);
-                player.setSpace(newSpace2);
-                break;
-        }
-
+        moveForward(player);
+        moveForward(player);
     }
 
     // TODO Task2
@@ -297,15 +246,7 @@ public class GameController {
      * @param player is the player that shall move
      */
     public void turnRight(@NotNull Player player) {
-        Heading currentHeading = player.getHeading();
-
-        switch(currentHeading){
-
-            case NORTH -> player.setHeading(Heading.EAST);
-            case SOUTH -> player.setHeading(Heading.WEST);
-            case EAST -> player.setHeading(Heading.SOUTH);
-            case WEST -> player.setHeading(Heading.NORTH);
-        }
+        player.setHeading(player.getHeading().next());
     }
 
     // TODO Task2
@@ -315,24 +256,7 @@ public class GameController {
      * @param player is the player that shall move
      */
     public void turnLeft(@NotNull Player player) {
-
-        Heading currentHeading = player.getHeading();
-
-        switch(currentHeading){
-            case EAST:
-                player.setHeading(Heading.NORTH);
-                break;
-            case WEST:
-                player.setHeading(Heading.SOUTH);
-                break;
-            case NORTH:
-                player.setHeading(Heading.WEST);
-                break;
-            case SOUTH:
-                player.setHeading(Heading.EAST);
-                break;
-        }
-
+        player.setHeading(player.getHeading().prev());
     }
 
     /**
