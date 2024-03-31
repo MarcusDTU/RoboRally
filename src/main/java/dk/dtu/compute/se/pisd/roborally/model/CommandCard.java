@@ -30,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
  * to track changes to the command cards state. The command card tells robots in the
  * game what to do and keeps everyone updated when something changes.
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author Asma Maryam (Only javadoc)
  *
  */
 public class CommandCard extends Subject {

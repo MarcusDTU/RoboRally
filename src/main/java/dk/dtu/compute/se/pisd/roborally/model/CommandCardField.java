@@ -28,6 +28,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
  * The field is observable for any change to its state,
  * such as when a card is placed on it or its visibility changes.
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author Asma Maryam (Only javadoc)
  *
  */
 public class CommandCardField extends Subject {
@@ -42,7 +43,6 @@ public class CommandCardField extends Subject {
     /**
      * A constructor associated with a specific player.
      * @param player the player to whom this field is associated
-     * @author Ekkart Kindler
      */
 
     public CommandCardField(Player player) {
@@ -52,8 +52,8 @@ public class CommandCardField extends Subject {
     }
 
     /**
+     * Returns the command card currently on this field.
      * @return Return the command card.
-     * @author Ekkart Kindler
      */
     public CommandCard getCard() {
         return card;
@@ -62,7 +62,6 @@ public class CommandCardField extends Subject {
 
     /**
      * @param card The command card to place on the field.
-     * @author Ekkart Kindler, ekki@dtu.dk
      */
 
     public void setCard(CommandCard card) {
@@ -73,9 +72,8 @@ public class CommandCardField extends Subject {
     }
 
     /**
-     * Checks this field id visible.
+     * Checks this field if visible.
      * @return true if the field is visible, false otherwise.
-     * @author Ekkart Kindler, ekki@dtu.dk
      */
     public boolean isVisible() {
         return visible;
@@ -85,7 +83,6 @@ public class CommandCardField extends Subject {
      * this method sets the visibility of this field and notifies observers
      *if there is a change.
      * @param visible The new visibility state of this field, and have boolean type. .
-     * @author Ekkart Kindler, ekki@dtu.dk
      */
     public void setVisible(boolean visible) {
         if (visible != this.visible) {
