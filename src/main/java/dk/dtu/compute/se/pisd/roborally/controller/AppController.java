@@ -104,7 +104,7 @@ public class AppController implements Observer {
         }
     }
 
-    /*
+    /**
      * This method saves the current game.
      * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
      */
@@ -112,7 +112,7 @@ public class AppController implements Observer {
         // XXX needs to be implemented eventually
     }
 
-    /*
+    /**
      * This method loads a previously saved game.
      */
     public void loadGame() {
@@ -146,7 +146,7 @@ public class AppController implements Observer {
         return false;
     }
 
-    /*
+    /**
      * This method raises a dialog, allowing the user to exit the application.
      * If the user selects cancel in the dialog, the dialog closes. Otherwise, 
      * if the user selects ok, they are given the option of saving the current game,
@@ -173,9 +173,8 @@ public class AppController implements Observer {
             Platform.exit();
         }
     }
-    /*
+    /**
      * @return Whether the game is running as a boolean.
-     * 
      * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
      * 
      */
@@ -183,8 +182,8 @@ public class AppController implements Observer {
         return gameController != null;
     }
 
-    /*
-     *  @param subject
+    /**
+     * @param subject
      * 
      * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
      */

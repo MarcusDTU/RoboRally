@@ -111,8 +111,8 @@ public class Board extends Subject {
 
     /**
      *  Returns a space with the given x and y coordinates if it exists within the board, otherwise returns null
-     *  @param int x-coordinate of space
-     *  @param int y-coordinate of space
+     *  @param x x-coordinate of space
+     *  @param y y-coordinate of space
      *  @return space if the space exists within the board
      *  @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
      */
@@ -147,7 +147,7 @@ public class Board extends Subject {
     /** 
      * Returns the player with the index of the int parameter if it exists within players list, otherwise returns null.
      * 
-     * @param int index of player
+     * @param i index of player
      * @return player
      * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
      */
@@ -309,19 +309,10 @@ public class Board extends Subject {
         // the students, this method gives a string representation of the current
         // status of the game (specifically, it shows the phase, the player and the step)
 
-        // TODO Task1: this string could eventually be refined
-        //      The status line should show more information based on
-        //      situation; for now, introduce a counter to the Board,
-        //      which is counted up every time a player makes a move; the
-        //      status line should show the current player and the number
-        //      of the current move!
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName() +
                 ", Step: " + getStep();
 
-        // TODO Task1: add a counter along with a getter and a setter, so the
-        //      state of the board (game) contains the number of moves, which then can
-        //      be used to extend the status message 
     }
 
 
