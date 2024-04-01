@@ -27,7 +27,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * Represents a space on the game board.
  */
 public class Space extends Subject {
 
@@ -38,6 +38,14 @@ public class Space extends Subject {
 
     private Player player;
 
+
+    /**
+     * Constructs a new Space.
+     *
+     * @param board The board that this space belongs to.
+     * @param x     The x-coordinate of this space on the board.
+     * @param y     The y-coordinate of this space on the board.
+     */
     public Space(Board board, int x, int y) {
         this.board = board;
         this.x = x;
@@ -45,10 +53,21 @@ public class Space extends Subject {
         player = null;
     }
 
+    /**
+     * Gets the player occupying this space.
+     *
+     * @return The player occupying this space, or null if the space is empty.
+     */
     public Player getPlayer() {
         return player;
     }
 
+
+    /**
+     * Sets the player occupying this space.
+     *
+     * @param player The player to occupy this space.
+     */
     public void setPlayer(Player player) {
         Player oldPlayer = this.player;
         if (player != oldPlayer &&

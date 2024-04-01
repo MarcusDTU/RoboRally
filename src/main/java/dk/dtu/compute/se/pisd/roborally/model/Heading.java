@@ -25,16 +25,29 @@ package dk.dtu.compute.se.pisd.roborally.model;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
+ * Enum representing cardinal directions.
  *
  */
 public enum Heading {
 
     SOUTH, WEST, NORTH, EAST;
 
+    /**
+     * Returns the next cardinal direction.
+     *
+     * @author Daniel
+     * @return Heading, the next cardinal direction.
+     */
     public Heading next() {
         return values()[(this.ordinal() + 1) % values().length];
     }
 
+    /**
+     * Returns the previous cardinal direction.
+     *
+     * @author Daniel
+     * @return The previous cardinal direction.
+     */
     public Heading prev() {
         return values()[(this.ordinal() + values().length - 1) % values().length];
     }

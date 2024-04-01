@@ -30,7 +30,7 @@ import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * Represents a player in the game
  */
 public class Player extends Subject {
 
@@ -48,6 +48,13 @@ public class Player extends Subject {
     private CommandCardField[] program;
     private CommandCardField[] cards;
 
+    /**
+     * Constructs a new Player.
+     *
+     * @param board The board the player belongs to.
+     * @param color The color of the player.
+     * @param name  The name of the player.
+     */
     public Player(@NotNull Board board, String color, @NotNull String name) {
         this.board = board;
         this.name = name;
@@ -66,10 +73,20 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Gets the name of the player.
+     *
+     * @return The name of the player.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the name of the player.
+     *
+     * @param name The new name of the player.
+     */
     public void setName(String name) {
         if (name != null && !name.equals(this.name)) {
             this.name = name;
@@ -80,10 +97,20 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Gets the color of the player.
+     *
+     * @return The color of the player.
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Sets the color of the player.
+     *
+     * @param color The new color of the player.
+     */
     public void setColor(String color) {
         this.color = color;
         notifyChange();
@@ -92,10 +119,20 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Gets the space the player is currently on.
+     *
+     * @return The space the player is currently on.
+     */
     public Space getSpace() {
         return space;
     }
 
+    /**
+     * Sets the space the player is currently on.
+     *
+     * @param space The new space for the player.
+     */
     public void setSpace(Space space) {
         Space oldSpace = this.space;
         if (space != oldSpace &&
@@ -111,10 +148,20 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Gets the heading of the player.
+     *
+     * @return The heading of the player.
+     */
     public Heading getHeading() {
         return heading;
     }
 
+    /**
+     * Sets the heading of the player.
+     *
+     * @param heading The new heading of the player.
+     */
     public void setHeading(@NotNull Heading heading) {
         if (heading != this.heading) {
             this.heading = heading;
@@ -125,10 +172,22 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Gets the command card field at the specified index in the player's program.
+     *
+     * @param i The index of the command card field.
+     * @return The command card field at the specified index.
+     */
     public CommandCardField getProgramField(int i) {
         return program[i];
     }
 
+    /**
+     * Gets the command card field at the specified index in the player's hand.
+     *
+     * @param i The index of the command card field.
+     * @return The command card field at the specified index.
+     */
     public CommandCardField getCardField(int i) {
         return cards[i];
     }
