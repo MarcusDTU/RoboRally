@@ -132,6 +132,19 @@ public class PlayerView extends Tab implements ViewObserver {
         }
     }
 
+    /**
+     * This method takes the abstract subject and determines it to be a player.
+     * From here there is a plethora of possibilities.
+     * The first possibility is the player's programming slots being empty or not.
+     * After that has been determined, the method then sees if there is active play
+     * and then changes the view of the card backgrounds to be yellow when that register
+     * is being played and green when that register is done.
+     * After a completed round, the method reverts the background to white.
+     * The latter part of the method makes it so that the cards being played are actually visible
+     * in the GUI and then uses the buttons created to have them activate.
+     * @param subject the subject to update in the view
+     */
+
     @Override
     public void updateView(Subject subject) {
         if (subject == player.board) {
