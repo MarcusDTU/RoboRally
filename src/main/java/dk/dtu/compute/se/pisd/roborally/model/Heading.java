@@ -35,7 +35,7 @@ public enum Heading {
     /**
      * Returns the next cardinal direction.
      *
-     * @author Daniel
+     * @author Daniel Overballe Lerche, s235095@dtu.dk
      * @return Heading, the next cardinal direction.
      */
     public Heading next() {
@@ -45,7 +45,7 @@ public enum Heading {
     /**
      * Returns the previous cardinal direction.
      *
-     * @author Daniel
+     * @author Daniel Overballe Lerche, s235095@dtu.dk
      * @return The previous cardinal direction.
      */
     public Heading prev() {
