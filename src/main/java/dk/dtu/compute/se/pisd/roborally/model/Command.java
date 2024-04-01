@@ -26,7 +26,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * ...
+ * The enum is a "list" with four commands. The player can program their robot with the four commands.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
