@@ -28,7 +28,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.scene.control.TabPane;
 
 /**
- * ...
+ * Represents the overview of the players in the game.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *

@@ -33,7 +33,7 @@ import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * Represents the view of a player in the RoboRally game containing the programming cards and registers.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
