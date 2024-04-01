@@ -34,7 +34,7 @@ import javafx.scene.shape.StrokeLineCap;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ *  SpaceView is responsible for how a space is represented within the UI.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
