@@ -79,6 +79,12 @@ public class RoboRallyMenuBar extends MenuBar {
         update();
     }
 
+    /**
+     * This method checks if the game is running and displays the buttons to start a new game
+     * or load a previous game when the game is not running and buttons to quit and save the game for
+     * when the game is running.
+     */
+
     public void update() {
         if (appController.isGameRunning()) {
             newGame.setVisible(false);
