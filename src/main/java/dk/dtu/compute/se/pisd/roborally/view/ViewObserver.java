@@ -26,7 +26,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import javafx.application.Platform;
 
 /**
- * ...
+ * viewobserver updates the view for a given subject
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
