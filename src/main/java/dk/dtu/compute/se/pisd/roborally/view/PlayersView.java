@@ -53,6 +53,13 @@ public class PlayersView extends TabPane implements ViewObserver {
         update(board);
     }
 
+    /**
+     * This method takes the subject object as its parameter and verifies it as the board.
+     * From here the method gets the current player from the board and then gets the number
+     * from the player whose turn it is and displays it. 
+     * @param subject
+     */
+
     @Override
     public void updateView(Subject subject) {
         if (subject == board) {
