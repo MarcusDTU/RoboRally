@@ -22,7 +22,6 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 /**
- * ...
  * Enum representing cardinal directions.
  * @author Ekkart Kindler, ekki@dtu.dk
  *

@@ -27,7 +27,6 @@ import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
- * ...
  * Represents a player in the game
  *
  * @author Ekkart Kindler, ekki@dtu.dk
