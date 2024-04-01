@@ -28,9 +28,10 @@ import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
  * ...
+ * Represents a player in the game
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * Represents a player in the game
+ *
  */
 public class Player extends Subject {
 

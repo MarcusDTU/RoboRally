@@ -23,9 +23,9 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 /**
  * ...
- *
- * @author Ekkart Kindler, ekki@dtu.dk
  * Enum representing cardinal directions.
+ * @author Ekkart Kindler, ekki@dtu.dk
+ *
  *
  */
 public enum Heading {
@@ -36,6 +36,7 @@ public enum Heading {
      * Returns the next cardinal direction.
      *
      * @author Daniel Overballe Lerche, s235095@dtu.dk
+     *
      * @return Heading, the next cardinal direction.
      */
     public Heading next() {

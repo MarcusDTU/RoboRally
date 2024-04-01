@@ -25,9 +25,10 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
 /**
  * ...
+ * Represents a space on the game board.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * Represents a space on the game board.
+ *
  */
 public class Space extends Subject {
 
