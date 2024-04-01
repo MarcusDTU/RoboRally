@@ -30,7 +30,7 @@ import java.util.List;
 import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
 
 /**
- * ...
+ * The Board class is responsible for representing a gameboard. Each board is composed of a number of spaces, based on a width and a height. 
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
@@ -57,6 +57,12 @@ public class Board extends Subject {
 
     private boolean stepMode;
 
+    /**
+     * @param width of board (int)
+     * @param height of board (int)
+     * @param boardName of board (String)
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public Board(int width, int height, @NotNull String boardName) {
         this.boardName = boardName;
         this.width = width;
@@ -70,15 +76,29 @@ public class Board extends Subject {
         }
         this.stepMode = false;
     }
-
+    /**
+     * @param width of board (int)
+     * @param height of board (int)
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public Board(int width, int height) {
         this(width, height, "defaultboard");
     }
 
+    /**
+     * Returns gameId
+     * @return gameId of the board (Integer)
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public Integer getGameId() {
         return gameId;
     }
 
+    /**
+     * Set gameId based on int parameter, if gameId is null. Otherwise, throw IllegalStateException
+     * @param gameId int 
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public void setGameId(int gameId) {
         if (this.gameId == null) {
             this.gameId = gameId;
@@ -89,6 +109,13 @@ public class Board extends Subject {
         }
     }
 
+    /**
+     *  Returns a space with the given x and y coordinates if it exists within the board, otherwise returns null
+     *  @param int x-coordinate of space
+     *  @param int y-coordinate of space
+     *  @return space if the space exists within the board
+     *  @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
+     */
     public Space getSpace(int x, int y) {
         if (x >= 0 && x < width &&
                 y >= 0 && y < height) {
@@ -98,6 +125,11 @@ public class Board extends Subject {
         }
     }
 
+    /**
+     * Returns the number of players on the board.
+     * @return number of players on the board (int).
+     * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only).
+     */
     public int getPlayersNumber() {
         return players.size();
     }
@@ -112,6 +144,13 @@ public class Board extends Subject {
         }
     }
 
+    /** 
+     * Returns the player with the index of the int parameter if it exists within players list, otherwise returns null.
+     * 
+     * @param int index of player
+     * @return player
+     * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
+     */
     public Player getPlayer(int i) {
         if (i >= 0 && i < players.size()) {
             return players.get(i);
@@ -120,10 +159,20 @@ public class Board extends Subject {
         }
     }
 
+    /**
+     * Returns the current player.
+     * @return player current player
+     * @author Nikolaj Schæbel, s220471@dtu.dk (javadoc only)
+     */
     public Player getCurrentPlayer() {
         return current;
     }
 
+    /**
+     * Changes current player based on the player passed as a parameter. 
+     * @param player to be designated as current player
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public void setCurrentPlayer(Player player) {
         if (player != this.current && players.contains(player)) {
             this.current = player;
@@ -131,10 +180,24 @@ public class Board extends Subject {
         }
     }
 
+    /**
+     * Returns current phase
+     * 
+     * @return phase current phase
+     * 
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public Phase getPhase() {
         return phase;
     }
 
+    /**
+     * Changes phase based on the phase passed as a parameter.
+     * 
+     * @param phase to change to
+     * 
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public void setPhase(Phase phase) {
         if (phase != this.phase) {
             this.phase = phase;
@@ -142,10 +205,24 @@ public class Board extends Subject {
         }
     }
 
+    /**
+     * Returns step
+     * 
+     * @return step (int)
+     * 
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public int getStep() {
         return step;
     }
 
+    /**
+     * Sets step based on the int passed as a parameter
+     * 
+     * @param step the integer to set step to
+     * 
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public void setStep(int step) {
         if (step != this.step) {
             this.step = step;
@@ -153,10 +230,24 @@ public class Board extends Subject {
         }
     }
 
+    /**
+     * Returns a boolean indicating whether stepMode is enabled or not
+     * 
+     * @return stepMode (boolean)
+     * 
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public boolean isStepMode() {
         return stepMode;
     }
 
+    /**
+     * Set StepMode based on boolean passed as a parameter
+     * 
+     * @param stepMode (boolean)
+     * 
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public void setStepMode(boolean stepMode) {
         if (stepMode != this.stepMode) {
             this.stepMode = stepMode;
@@ -164,6 +255,13 @@ public class Board extends Subject {
         }
     }
 
+    /**
+     * Returns the player number (index) of a given player
+     * 
+     * @param player who you want to find the player number / index of
+     * @return int player number / index
+     * @author Nikolaj Schæbel s220471@dtu.dk (javadoc only)
+     */
     public int getPlayerNumber(@NotNull Player player) {
         if (player.board == this) {
             return players.indexOf(player);
