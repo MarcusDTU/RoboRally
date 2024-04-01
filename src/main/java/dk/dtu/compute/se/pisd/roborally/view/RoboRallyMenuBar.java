@@ -27,7 +27,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 /**
- * ...
+ * Responsible for creating the menu bar for the RoboRally application.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
